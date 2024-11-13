@@ -1,5 +1,4 @@
 import { IonIcon, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonNote, IonText } from '@ionic/react';
-import './ExploreContainer.css';
 import { trash } from 'ionicons/icons';
 import { Clipboard } from '@capacitor/clipboard';
 
