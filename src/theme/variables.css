@@ -1,2 +1,23 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+
+@media (prefers-color-scheme: dark) {
+  :root.ios {
+    --ion-item-background: #1c1c1e;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root.ios {
+    --ion-background-color: #f2f1f7;
+    --ion-item-background: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root.md {
+    --ion-background-color: #f4f5f8;
+    --ion-item-background: #fff;
+  }
+}

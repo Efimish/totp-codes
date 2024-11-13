@@ -1,6 +1,6 @@
-import { IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonNote, IonPage, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonNote, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Settings.css';
-import { informationCircleOutline } from 'ionicons/icons';
+import { arrowDown, arrowUp } from 'ionicons/icons';
 
 const Tab2: React.FC = () => {
   return (
@@ -10,21 +10,17 @@ const Tab2: React.FC = () => {
           <IonTitle>Settings</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen color="light">
+      <IonContent fullscreen>
         <IonList inset={true}>
           <IonItem button={true}>
-            <IonIcon color='tertiary' icon={informationCircleOutline} slot="start" />
+            <IonIcon color='primary' icon={arrowDown} slot="start" />
             <IonLabel>Import Codes</IonLabel>
           </IonItem>
+
           <IonItem button={true}>
-            <IonIcon color='tertiary' icon={informationCircleOutline} slot="start" />
+            <IonIcon color='primary' icon={arrowUp} slot="start" />
             <IonLabel>Export Codes</IonLabel>
           </IonItem>
-          {/* <IonItem>
-            <IonIcon color='tertiary' icon={airplaneOutline} slot="start" />
-            <IonLabel>Sample toggle</IonLabel>
-            <IonToggle slot="end" />
-          </IonItem> */}
         </IonList>
         <IonNote color="medium" class="ion-margin-horizontal">
           Codes app version 0.0.1
