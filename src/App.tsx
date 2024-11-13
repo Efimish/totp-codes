@@ -54,18 +54,22 @@ const App: React.FC = () => (
           <Route exact path="/codes">
             <Codes />
           </Route>
+
           <Route exact path="/settings">
             <Settings />
           </Route>
+
           <Route exact path="/">
             <Redirect to="/codes" />
           </Route>
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
+
+        <IonTabBar slot="bottom" id="footer">
           <IonTabButton tab="codes" href="/codes">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Codes</IonLabel>
           </IonTabButton>
+
           <IonTabButton tab="settings" href="/settings">
             <IonIcon aria-hidden="true" icon={settings} />
             <IonLabel>Settings</IonLabel>
