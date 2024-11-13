@@ -9,7 +9,7 @@ import {
   IonTabs,
   setupIonicReact
 } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactHashRouter } from '@ionic/react-router';
 import { home, settings } from 'ionicons/icons';
 import Codes from './pages/Codes';
 import Settings from './pages/Settings';
@@ -48,7 +48,7 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
+    <IonReactHashRouter>
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/codes">
@@ -58,21 +58,21 @@ const App: React.FC = () => (
             <Settings />
           </Route>
           <Route exact path="/">
-            <Redirect to="codes" />
+            <Redirect to="/codes" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="codes" href="codes">
+          <IonTabButton tab="codes" href="/codes">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Codes</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="settings" href="settings">
+          <IonTabButton tab="settings" href="/settings">
             <IonIcon aria-hidden="true" icon={settings} />
             <IonLabel>Settings</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
-    </IonReactRouter>
+    </IonReactHashRouter>
   </IonApp>
 );
 
