@@ -58,15 +58,15 @@ const App: React.FC = () => (
             <Settings />
           </Route>
           <Route exact path="/">
-            <Redirect to="/codes" />
+            <Redirect to="codes" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="codes" href="/codes">
+          <IonTabButton tab="codes" href="codes">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Codes</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="settings" href="/settings">
+          <IonTabButton tab="settings" href="settings">
             <IonIcon aria-hidden="true" icon={settings} />
             <IonLabel>Settings</IonLabel>
           </IonTabButton>
