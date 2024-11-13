@@ -3,6 +3,17 @@ import { add, logoGithub, logoGoogle, logoApple, helpOutline } from 'ionicons/ic
 import Code from '../components/Code';
 
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner'
+
+const scanCode = async () => {
+  const code = await CapacitorBarcodeScanner.scanBarcode({
+    hint: CapacitorBarcodeScannerTypeHint.QR_CODE
+  });
+
+  const result = code.ScanResult;
+
+  alert(result);
+}
 
 const takePicture = async () => {
   const image = await Camera.getPhoto({
@@ -34,7 +45,7 @@ const Codes: React.FC = () => {
           <IonTitle>Codes</IonTitle>
 
           <IonButtons slot="end">
-            <IonButton onClick={() => takePicture()}>
+            <IonButton onClick={() => scanCode()}>
               <IonIcon slot="icon-only" icon={add}></IonIcon>
             </IonButton>
           </IonButtons>
