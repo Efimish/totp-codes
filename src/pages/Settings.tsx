@@ -1,5 +1,4 @@
 import { IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonNote, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './Settings.css';
 import { arrowDown, arrowUp } from 'ionicons/icons';
 
 const Tab2: React.FC = () => {
