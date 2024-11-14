@@ -1,36 +1,19 @@
 import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonList, IonPage, IonSearchbar, IonTitle, IonToolbar } from '@ionic/react';
 import { add, logoGithub, logoGoogle, logoApple, helpOutline } from 'ionicons/icons';
 import Code from '../components/Code';
+import { BrowserQRCodeReader, BrowserCodeReader } from '@zxing/browser';
 
-import { Camera, CameraResultType } from '@capacitor/camera';
-import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner'
-
-const scanCode = async () => {
-  const code = await CapacitorBarcodeScanner.scanBarcode({
-    hint: CapacitorBarcodeScannerTypeHint.QR_CODE
-  });
-
-  const result = code.ScanResult;
-
-  alert(result);
+const scanQRCcode = async () => {
+  const reader = new BrowserQRCodeReader();
+  const devices = await BrowserCodeReader.listVideoInputDevices();
+  const deviceId = devices[0].deviceId;
+  const controls = await reader.decodeFromVideoDevice(deviceId, undefined, (result) => {
+    if (result) {
+      alert(result.getText());
+      controls.stop();
+    }
+  })
 }
-
-const takePicture = async () => {
-  const image = await Camera.getPhoto({
-    quality: 90,
-    allowEditing: true,
-    resultType: CameraResultType.Uri
-  });
-
-  // image.webPath will contain a path that can be set as an image src.
-  // You can access the original file using image.path, which can be
-  // passed to the Filesystem API to read the raw data of the image,
-  // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
-  const imageUrl = image.webPath;
-
-  // Can be set to the src of an image now
-  alert(imageUrl);
-};
 
 const Codes: React.FC = () => {
   return (
@@ -45,7 +28,7 @@ const Codes: React.FC = () => {
           <IonTitle>Codes</IonTitle>
 
           <IonButtons slot="end">
-            <IonButton onClick={() => scanCode()}>
+            <IonButton onClick={() => scanQRCcode()}>
               <IonIcon slot="icon-only" icon={add}></IonIcon>
             </IonButton>
           </IonButtons>
