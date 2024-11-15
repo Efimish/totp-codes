@@ -1,4 +1,6 @@
-import { IonApp, IonNav, setupIonicReact } from '@ionic/react';
+import { Route } from 'react-router';
+import { IonApp, IonNav, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 import Codes from './pages/Codes';
 
 /* Core CSS required for Ionic components to work properly */
@@ -35,7 +37,13 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonNav root={() => <Codes />}></IonNav>
+    <IonReactRouter>
+      <IonRouterOutlet>
+        <Route exact path="/">
+          <IonNav root={() => <Codes />}></IonNav>
+        </Route>
+      </IonRouterOutlet>
+    </IonReactRouter>
   </IonApp>
 );
 

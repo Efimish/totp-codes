@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'testing-ionic',
+  appId: 'io.github.efimish.totpcodes',
+  appName: 'TOTP Codes',
   webDir: 'dist'
 };
 
