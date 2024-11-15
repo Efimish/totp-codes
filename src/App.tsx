@@ -37,7 +37,7 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
+    <IonReactRouter basename={process.env.NODE_ENV === 'production' ? '/totp-codes' : '/'}>
       <IonRouterOutlet>
         <Route exact path="/">
           <IonNav root={() => <Codes />}></IonNav>
