@@ -1,18 +1,5 @@
-import { Redirect, Route } from 'react-router-dom';
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact
-} from '@ionic/react';
-import { IonReactHashRouter } from '@ionic/react-router';
-import { home, settings } from 'ionicons/icons';
+import { IonApp, IonNav, setupIonicReact } from '@ionic/react';
 import Codes from './pages/Codes';
-import Settings from './pages/Settings';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -48,35 +35,7 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactHashRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/codes">
-            <Codes />
-          </Route>
-
-          <Route exact path="/settings">
-            <Settings />
-          </Route>
-
-          <Route exact path="/">
-            <Redirect to="/codes" />
-          </Route>
-        </IonRouterOutlet>
-
-        <IonTabBar slot="bottom" id="footer">
-          <IonTabButton tab="codes" href="/codes">
-            <IonIcon aria-hidden="true" icon={home} />
-            <IonLabel>Codes</IonLabel>
-          </IonTabButton>
-
-          <IonTabButton tab="settings" href="/settings">
-            <IonIcon aria-hidden="true" icon={settings} />
-            <IonLabel>Settings</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactHashRouter>
+    <IonNav root={() => <Codes />}></IonNav>
   </IonApp>
 );
 

@@ -1,19 +1,8 @@
-import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonList, IonPage, IonSearchbar, IonTitle, IonToolbar } from '@ionic/react';
-import { add, logoGithub, logoGoogle, logoApple, helpOutline } from 'ionicons/icons';
+import { IonButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonList, IonNavLink, IonPage, IonSearchbar, IonTitle, IonToolbar } from '@ionic/react';
+import { add, settingsOutline, createOutline, logoGithub, logoGoogle, logoApple, helpOutline } from 'ionicons/icons';
 import Code from '../components/Code';
-import { BrowserQRCodeReader, BrowserCodeReader } from '@zxing/browser';
-
-const scanQRCcode = async () => {
-  const reader = new BrowserQRCodeReader();
-  const devices = await BrowserCodeReader.listVideoInputDevices();
-  const deviceId = devices[0].deviceId;
-  const controls = await reader.decodeFromVideoDevice(deviceId, undefined, (result) => {
-    if (result) {
-      alert(result.getText());
-      controls.stop();
-    }
-  })
-}
+import QRScanner from './QRScanner';
+import Settings from './Settings';
 
 const Codes: React.FC = () => {
   return (
@@ -22,15 +11,19 @@ const Codes: React.FC = () => {
         <IonToolbar>
 
           <IonButtons slot="start">
-            <IonButton>Edit</IonButton>
+            <IonButton>
+              <IonIcon slot="icon-only" icon={createOutline}></IonIcon>
+            </IonButton>
           </IonButtons>
 
           <IonTitle>Codes</IonTitle>
 
           <IonButtons slot="end">
-            <IonButton onClick={() => scanQRCcode()}>
-              <IonIcon slot="icon-only" icon={add}></IonIcon>
-            </IonButton>
+            <IonNavLink routerDirection="forward" component={() => <Settings />}>
+              <IonButton>
+                <IonIcon slot="icon-only" icon={settingsOutline}></IonIcon>
+              </IonButton>
+            </IonNavLink>
           </IonButtons>
   
         </IonToolbar>
@@ -41,27 +34,36 @@ const Codes: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
+
+        <IonFab slot="fixed" vertical="bottom" horizontal="end">
+          <IonNavLink routerDirection="forward" component={() => <QRScanner />}>
+            <IonFabButton>
+              <IonIcon icon={add}></IonIcon>
+            </IonFabButton>
+          </IonNavLink>
+        </IonFab>
+
         <IonList inset={true}>
           <Code
             name='Apple'
             user='user@gmail.com'
             code='123123'
             icon={logoApple}
-          ></Code>
+          />
 
           <Code
             name='Google'
             user='user2@gmail.com'
             code='456456'
             icon={logoGoogle}
-          ></Code>
+          />
 
           <Code
             name='GitHub'
             user='your-username'
             code='789789'
             icon={logoGithub}
-          ></Code>
+          />
 
           {[...Array(20).keys()].map(i => <Code name={'test-'+i} user='user' code='000000' icon={helpOutline} />)} 
         </IonList>
